@@ -1,14 +1,16 @@
 :root {
-  --primary-color: #FF9900;
-  --primary-dark: #E88B00;
+  --primary-color: #4B8F1E;
+  --primary-dark: #3F7919;
   --secondary-color: #232F3E;
-  --background-color: #F8F8F8;
-  --text-color: #232F3E;
+  --background-color: #F5F5F5;
+  --text-color: #333333;
   --error-color: #D13212;
   --success-color: #108043;
-  --border-color: #DDD;
+  --border-color: #E0E0E0;
   --input-background: #FFFFFF;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --chart-principal: #2979FF;
+  --chart-interest: #7CB342;
 }
 
 * {
@@ -173,8 +175,11 @@ button:active {
 
 /* Calculator specific styles */
 .calc-container {
+  max-width: 1024px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 0;
   background: white;
-  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--shadow-color);
 }
@@ -210,25 +215,30 @@ button:active {
 
 .calculator-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 45% 55%;
     gap: 2rem;
-    margin-top: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .input-section {
-    padding-right: 2rem;
-    border-right: 1px solid var(--border-color);
+    padding: 2rem;
+    background: #F8F8F8;
+    border-radius: 8px 0 0 8px;
 }
 
 .results-section {
-    padding-left: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 0 8px 8px 0;
 }
 
 .monthly-payment {
     background: var(--primary-color);
     color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -237,7 +247,8 @@ button:active {
 
 .monthly-payment h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 500;
 }
 
 .save-button {
@@ -247,76 +258,153 @@ button:active {
     border-radius: 4px;
     cursor: pointer;
     font-weight: 500;
+    text-transform: capitalize;
 }
 
 .pie-chart-container {
-    margin: 2rem 0;
-    max-width: 300px;
-    margin: 0 auto;
+    width: 250px;
+    margin: 2rem auto;
 }
 
 .details-grid {
     margin-top: 2rem;
     display: grid;
     gap: 1rem;
+    font-size: 1rem;
 }
 
 .detail-row {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     border-bottom: 1px solid var(--border-color);
 }
 
 .detail-label {
-    color: var(--secondary-color);
-    font-weight: 500;
+    color: var(--text-color);
+    font-weight: normal;
 }
 
 .detail-value {
-    font-weight: 600;
+    font-weight: 500;
+    color: var(--text-color);
 }
 
 .down-payment-group, .interest-rate-group {
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 .percentage-symbol {
     position: absolute;
     right: 1rem;
-    color: var(--secondary-color);
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
 }
 
 .info-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: var(--secondary-color);
-    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background: #E0E0E0;
+    color: #666;
     border-radius: 50%;
-    text-align: center;
-    line-height: 16px;
     font-size: 12px;
     margin-left: 0.5rem;
     cursor: help;
 }
 
+@media (max-width: 1080px) {
+    .calc-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+}
+
 @media (max-width: 768px) {
+    .calc-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
     .calculator-grid {
         grid-template-columns: 1fr;
     }
 
     .input-section {
-        padding-right: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding-bottom: 2rem;
+        border-radius: 0;
     }
 
     .results-section {
-        padding-left: 0;
-        padding-top: 2rem;
+        border-radius: 0;
+    }
+}
+
+.calc-container h1 {
+    padding: 2rem;
+    margin-bottom: 0;
+    background: white;
+    border-radius: 8px 8px 0 0;
+}
+
+.logout-btn {
+    margin: 2rem auto;
+    max-width: 200px;
+    display: block;
+}
+
+.app-header {
+    background: var(--secondary-color);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1024px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info .logout-btn {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.user-info .logout-btn:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+#userName {
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
     }
 } 

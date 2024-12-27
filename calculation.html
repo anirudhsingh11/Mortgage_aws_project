@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <header class="app-header">
+        <div class="header-content">
+            <h1>Mortgage Calculator</h1>
+            <div class="user-info">
+                <span id="userName">Loading...</span>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </header>
+
     <div class="container calc-container">
         <h1>Mortgage Calculator</h1>
         <div class="calculator-grid">
@@ -14,26 +24,26 @@
                 <form id="calcForm">
                     <div class="input-group">
                         <label>Home Price</label>
-                        <input type="number" id="homePrice" required placeholder="Enter home price" min="1">
+                        <input type="number" id="homePrice" required placeholder="$400,000" min="1" value="400000">
                     </div>
 
                     <div class="input-group">
                         <label>Down Payment <span class="info-icon" title="Percentage of home price">?</span></label>
                         <div class="down-payment-group">
-                            <input type="number" id="downPayment" required placeholder="Enter percentage" min="0" max="100" value="20">
+                            <input type="number" id="downPayment" required placeholder="25" min="0" max="100" value="25">
                             <span class="percentage-symbol">%</span>
                         </div>
                     </div>
 
                     <div class="input-group">
                         <label>Loan Term <span class="info-icon" title="Duration of the loan in years">?</span></label>
-                        <input type="number" id="loanTerm" required placeholder="Enter years" min="1" max="50" value="30">
+                        <input type="number" id="loanTerm" required placeholder="48" min="1" max="50" value="48">
                     </div>
 
                     <div class="input-group">
                         <label>Interest Rate <span class="info-icon" title="Annual interest rate">?</span></label>
                         <div class="interest-rate-group">
-                            <input type="number" id="interestRate" required placeholder="Enter rate" step="0.001" min="0.001" max="30">
+                            <input type="number" id="interestRate" required placeholder="6.891" step="0.001" min="0.001" max="30" value="6.891">
                             <span class="percentage-symbol">%</span>
                         </div>
                     </div>
@@ -44,7 +54,7 @@
 
             <div class="results-section">
                 <div class="monthly-payment">
-                    <h2>Monthly Payment: <span id="monthlyPayment">$0.00</span></h2>
+                    <h2>Monthly Pay: <span id="monthlyPayment">$1,788.85</span></h2>
                     <div class="save-button">save</div>
                 </div>
 
@@ -55,27 +65,27 @@
                 <div class="details-grid">
                     <div class="detail-row">
                         <span class="detail-label">House Price</span>
-                        <span id="housePriceResult" class="detail-value">$0.00</span>
+                        <span id="housePriceResult" class="detail-value">$400,000.00</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Loan Amount</span>
-                        <span id="loanAmountResult" class="detail-value">$0.00</span>
+                        <span id="loanAmountResult" class="detail-value">$300,000.00</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Down Payment</span>
-                        <span id="downPaymentResult" class="detail-value">$0.00</span>
+                        <span id="downPaymentResult" class="detail-value">$100,000.00</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">Total of Payments</span>
-                        <span id="totalPaymentsResult" class="detail-value">$0.00</span>
+                        <span class="detail-label">Total of All Mortgage Payments</span>
+                        <span id="totalPaymentsResult" class="detail-value">$1,030,375.25</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Total Interest</span>
-                        <span id="totalInterestResult" class="detail-value">$0.00</span>
+                        <span id="totalInterestResult" class="detail-value">$730,375.25</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-label">Payoff Date</span>
-                        <span id="payoffDateResult" class="detail-value">-</span>
+                        <span class="detail-label">Mortgage Payoff Date</span>
+                        <span id="payoffDateResult" class="detail-value">Dec. 2072</span>
                     </div>
                 </div>
             </div>
@@ -87,9 +97,18 @@
     <script src="./src/js/auth.js"></script>
     <script src="./src/js/calc.js"></script>
     <script>
+        function displayUserInfo() {
+            const userData = JSON.parse(sessionStorage.getItem('user_data') || '{}');
+            const userNameElement = document.getElementById('userName');
+            if (userData.email) {
+                userNameElement.textContent = `Welcome, ${userData.email}`;
+            }
+        }
+
         if (!sessionStorage.getItem('id_token')) {
             window.location.href = 'index.html';
         } else {
+            displayUserInfo();
             loadCalculationLogic();
         }
     </script>
