@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mortgagecalc-dev-97794-authRole",
+      "UnauthRoleArn": "arn:aws:iam::746669208097:role/amplify-mortgagecalc-dev-97794-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::746669208097:role/amplify-mortgagecalc-dev-97794-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-mortgagecalc-dev-97794-deployment",
+      "UnauthRoleName": "amplify-mortgagecalc-dev-97794-unauthRole",
+      "StackName": "amplify-mortgagecalc-dev-97794",
+      "StackId": "arn:aws:cloudformation:ap-south-1:746669208097:stack/amplify-mortgagecalc-dev-97794/41e186a0-c36f-11ef-87dc-06a1051aae61",
+      "AmplifyAppId": "d2dv43od7zv88m"
+    },
+    "categories": {
+      "auth": {
+        "mortgagecalc891c13cc": {}
+      }
+    }
+  }
+}

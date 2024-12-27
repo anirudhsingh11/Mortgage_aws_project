@@ -1,0 +1,209 @@
+:root {
+  --primary-color: #FF9900;
+  --primary-dark: #E88B00;
+  --secondary-color: #232F3E;
+  --background-color: #F8F8F8;
+  --text-color: #232F3E;
+  --error-color: #D13212;
+  --success-color: #108043;
+  --border-color: #DDD;
+  --input-background: #FFFFFF;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+h1 {
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  background: var(--input-background);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+#calcResult {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--background-color);
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Status messages */
+#status {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.success {
+  background-color: rgba(16, 128, 67, 0.1);
+  color: var(--success-color);
+}
+
+.error {
+  background-color: rgba(209, 50, 18, 0.1);
+  color: var(--error-color);
+}
+
+/* Logo and branding */
+.brand-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.brand-header img {
+  max-width: 150px;
+  margin-bottom: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 520px) {
+  .container {
+    margin: 20px;
+    padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Loading spinner */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Logout button styling */
+.logout-btn {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+
+.logout-btn:hover {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Calculator specific styles */
+.calc-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  width: 100%;
+}
+
+.result-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--background-color);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.result-container.success {
+  border-left: 4px solid var(--success-color);
+}
+
+.result-container.error {
+  border-left: 4px solid var(--error-color);
+} 

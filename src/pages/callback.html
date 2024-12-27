@@ -1,0 +1,53 @@
+<div class="callback-container">
+  <h1>Processing Authentication...</h1>
+  <div id="status">Verifying your credentials...</div>
+</div>
+
+<script>
+  function handleAuthCallback() {
+    console.log('Processing authentication callback...');
+    const statusDiv = document.getElementById('status');
+    
+    try {
+      const hash = window.location.hash.substring(1);
+      console.log('Hash:', hash);
+      const params = new URLSearchParams(hash);
+      const idToken = params.get('id_token');
+      const accessToken = params.get('access_token');
+
+      if (!idToken || !accessToken) {
+        throw new Error('No tokens received');
+      }
+
+      sessionStorage.setItem('id_token', idToken);
+      sessionStorage.setItem('access_token', accessToken);
+      
+      statusDiv.textContent = 'Authentication successful, redirecting...';
+      
+      // Use setTimeout to ensure the status message is shown
+      setTimeout(() => {
+        window.history.pushState({}, '', '/calculation');
+        handleRoute('/calculation');
+      }, 10000);
+    } catch (error) {
+      console.error('Auth error:', error);
+      statusDiv.textContent = 'Authentication failed: ' + error.message;
+      setTimeout(() => {
+        window.history.pushState({}, '', '/');
+        handleRoute('/');
+      }, 3000);
+    }
+  }
+</script>
+
+<style>
+  .callback-container {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  #status {
+    margin-top: 1rem;
+    color: #666;
+  }
+</style>

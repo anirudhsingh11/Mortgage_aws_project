@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container calc-container">
+        <h1>Mortgage Calculator</h1>
+        <form id="calcForm">
+            <div class="input-group">
+                <label>Loan Amount ($):</label>
+                <input type="number" id="loanAmount" required placeholder="Enter principal amount" min="1">
+            </div>
+
+            <div class="input-group">
+                <label>Interest Rate (% per year):</label>
+                <input type="number" id="interestRate" required placeholder="Enter annual rate" step="0.1" min="0.1" max="30">
+            </div>
+
+            <div class="input-group">
+                <label>Loan Term (years):</label>
+                <input type="number" id="loanTerm" required placeholder="Enter term in years" min="1" max="50">
+            </div>
+
+            <button type="submit">Calculate Payment</button>
+        </form>
+
+        <div id="calcResult" class="result-container"></div>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+
+    <script src="./src/js/auth.js"></script>
+    <script src="./src/js/calc.js"></script>
+    <script>
+        if (!sessionStorage.getItem('id_token')) {
+            window.location.href = 'index.html';
+        } else {
+            loadCalculationLogic();
+        }
+    </script>
+</body>
+</html> 
