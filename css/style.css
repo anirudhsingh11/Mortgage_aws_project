@@ -206,4 +206,117 @@ button:active {
 
 .result-container.error {
   border-left: 4px solid var(--error-color);
+}
+
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.input-section {
+    padding-right: 2rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.results-section {
+    padding-left: 2rem;
+}
+
+.monthly-payment {
+    background: var(--primary-color);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.monthly-payment h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.save-button {
+    background: white;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.pie-chart-container {
+    margin: 2rem 0;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.details-grid {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-label {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+.detail-value {
+    font-weight: 600;
+}
+
+.down-payment-group, .interest-rate-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.percentage-symbol {
+    position: absolute;
+    right: 1rem;
+    color: var(--secondary-color);
+}
+
+.info-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 12px;
+    margin-left: 0.5rem;
+    cursor: help;
+}
+
+@media (max-width: 768px) {
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .input-section {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 2rem;
+    }
+
+    .results-section {
+        padding-left: 0;
+        padding-top: 2rem;
+    }
 } 

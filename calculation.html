@@ -9,29 +9,81 @@
 <body>
     <div class="container calc-container">
         <h1>Mortgage Calculator</h1>
-        <form id="calcForm">
-            <div class="input-group">
-                <label>Loan Amount ($):</label>
-                <input type="number" id="loanAmount" required placeholder="Enter principal amount" min="1">
+        <div class="calculator-grid">
+            <div class="input-section">
+                <form id="calcForm">
+                    <div class="input-group">
+                        <label>Home Price</label>
+                        <input type="number" id="homePrice" required placeholder="Enter home price" min="1">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Down Payment <span class="info-icon" title="Percentage of home price">?</span></label>
+                        <div class="down-payment-group">
+                            <input type="number" id="downPayment" required placeholder="Enter percentage" min="0" max="100" value="20">
+                            <span class="percentage-symbol">%</span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Loan Term <span class="info-icon" title="Duration of the loan in years">?</span></label>
+                        <input type="number" id="loanTerm" required placeholder="Enter years" min="1" max="50" value="30">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Interest Rate <span class="info-icon" title="Annual interest rate">?</span></label>
+                        <div class="interest-rate-group">
+                            <input type="number" id="interestRate" required placeholder="Enter rate" step="0.001" min="0.001" max="30">
+                            <span class="percentage-symbol">%</span>
+                        </div>
+                    </div>
+
+                    <button type="submit">Calculate</button>
+                </form>
             </div>
 
-            <div class="input-group">
-                <label>Interest Rate (% per year):</label>
-                <input type="number" id="interestRate" required placeholder="Enter annual rate" step="0.1" min="0.1" max="30">
+            <div class="results-section">
+                <div class="monthly-payment">
+                    <h2>Monthly Payment: <span id="monthlyPayment">$0.00</span></h2>
+                    <div class="save-button">save</div>
+                </div>
+
+                <div class="pie-chart-container">
+                    <canvas id="paymentChart"></canvas>
+                </div>
+
+                <div class="details-grid">
+                    <div class="detail-row">
+                        <span class="detail-label">House Price</span>
+                        <span id="housePriceResult" class="detail-value">$0.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Loan Amount</span>
+                        <span id="loanAmountResult" class="detail-value">$0.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Down Payment</span>
+                        <span id="downPaymentResult" class="detail-value">$0.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total of Payments</span>
+                        <span id="totalPaymentsResult" class="detail-value">$0.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Total Interest</span>
+                        <span id="totalInterestResult" class="detail-value">$0.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Payoff Date</span>
+                        <span id="payoffDateResult" class="detail-value">-</span>
+                    </div>
+                </div>
             </div>
-
-            <div class="input-group">
-                <label>Loan Term (years):</label>
-                <input type="number" id="loanTerm" required placeholder="Enter term in years" min="1" max="50">
-            </div>
-
-            <button type="submit">Calculate Payment</button>
-        </form>
-
-        <div id="calcResult" class="result-container"></div>
+        </div>
         <button onclick="logout()" class="logout-btn">Logout</button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./src/js/auth.js"></script>
     <script src="./src/js/calc.js"></script>
     <script>
